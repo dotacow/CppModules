@@ -1,5 +1,5 @@
-CC = c++
-CPPFLAGS = -Wall -Wextra -Werror -std=c++98
+CXX = c++
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
 SRCS = main.cpp Contact.cpp PhoneBook.cpp
 
@@ -11,10 +11,10 @@ NAME = macpbook
 all: $(NAME)
 
 $(NAME): $(OBJS)
-    $(CC) $(OBJS) $(CPPFLAGS) -o $(NAME)
+    $(CXX) $(OBJS) $(CXXFLAGS) -o $(NAME)
 
 $(ODIR)/%.o: %.cpp | $(ODIR)
-    $(CC) $(CPPFLAGS) -c $< -o $@
+    $(CXX) $(CXXFLAGS) -c $< -o $@
 
 $(ODIR):
     mkdir -p $(ODIR)
