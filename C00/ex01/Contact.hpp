@@ -6,7 +6,7 @@
 /*   By: yokitane <yokitane@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 21:36:05 by yokitane          #+#    #+#             */
-/*   Updated: 2025/06/26 01:47:21 by yokitane         ###   ########.fr       */
+/*   Updated: 2025/06/26 02:20:57 by yokitane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,17 +25,17 @@ class Contact
 		std::string	_darkestSecret;
 	public:
 		// Canonical Form (rule of five)
-		Contact ();
+		Contact ( void );
 		Contact (std::string firstName, std::string lastName, std::string nickName,std::string phoneNumber, std::string darkestSecret);
 		Contact (const Contact &other);
 		Contact &operator=(const Contact &other);
-		~Contact ();
+		~Contact ( void );
 		// Getters and Setters
-		std::string	getFirstName() const;
-		std::string	getLastName() const;
-		std::string	getNickName() const;
-		std::string	getPhoneNumber() const;
-		std::string	getDarkestSecret() const;
+		std::string	getFirstName(void) const;
+		std::string	getLastName(void) const;
+		std::string	getNickName(void) const;
+		std::string	getPhoneNumber(void) const;
+		std::string	getDarkestSecret(void) const;
 		void		setFirstName(std::string firstName);
 		void		setLastName(std::string lastName);
 		void		setNickName(std::string nickName);

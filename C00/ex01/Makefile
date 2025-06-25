@@ -1,7 +1,7 @@
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
-SRCS = main.cpp Contact.cpp PhoneBook.cpp
+SRCS = main.cpp Contact.cpp PhoneBook.cpp Commands.cpp
 
 ODIR = ofiles
 OBJS = $(addprefix $(ODIR)/,$(notdir $(SRCS:.cpp=.o)))

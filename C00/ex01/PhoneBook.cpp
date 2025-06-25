@@ -6,7 +6,7 @@
 /*   By: yokitane <yokitane@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 21:21:42 by yokitane          #+#    #+#             */
-/*   Updated: 2025/06/26 02:18:10 by yokitane         ###   ########.fr       */
+/*   Updated: 2025/06/26 02:21:14 by yokitane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 #include "PhoneBook.hpp"
 
-PhoneBook::PhoneBook() : _index(0), _size(0){};
+PhoneBook::PhoneBook(void) : _index(0), _size(0){};
 
 /**
  * @brief Adds a contact to the phonebook.
@@ -46,4 +46,4 @@ Contact PhoneBook::getContact(int index) const
 	return _contacts[index];
 }
 
-int PhoneBook::getSize() const { return(_size); }
+int PhoneBook::getSize(void) const { return(_size); }

@@ -6,7 +6,7 @@
 /*   By: yokitane <yokitane@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 21:35:32 by yokitane          #+#    #+#             */
-/*   Updated: 2025/06/26 01:45:28 by yokitane         ###   ########.fr       */
+/*   Updated: 2025/06/26 02:21:25 by yokitane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,11 @@
 	}
 	Contact::~Contact( void ){};
 			/*GETTERS*/
-	std::string	Contact::getFirstName() const { return (_firstName); }
-	std::string	Contact::getLastName() const { return (_lastName); }
-	std::string	Contact::getNickName() const { return (_nickName); }
-	std::string	Contact::getPhoneNumber() const { return (_phoneNumber); }
-	std::string Contact::getDarkestSecret() const{ return (_darkestSecret); }
+	std::string	Contact::getFirstName(void) const { return (_firstName); }
+	std::string	Contact::getLastName(void) const { return (_lastName); }
+	std::string	Contact::getNickName(void) const { return (_nickName); }
+	std::string	Contact::getPhoneNumber(void) const { return (_phoneNumber); }
+	std::string Contact::getDarkestSecret(void) const{ return (_darkestSecret); }
 			/*SETTERS*/
 	void	Contact::setFirstName(std::string firstName) { this->_firstName = firstName; }
 	void	Contact::setLastName(std::string lastName){ this->_lastName = lastName; }
