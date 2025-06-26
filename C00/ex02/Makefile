@@ -6,7 +6,7 @@ SRCS = tests.cpp Account.cpp
 ODIR = ofiles
 OBJS = $(addprefix $(ODIR)/,$(notdir $(SRCS:.cpp=.o)))
 
-NAME = macpbook
+NAME = plzusegitnexttime
 
 all: $(NAME)
 
