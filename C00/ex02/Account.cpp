@@ -6,7 +6,7 @@
 /*   By: yokitane <yokitane@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 17:25:16 by yokitane          #+#    #+#             */
-/*   Updated: 2025/06/26 18:53:28 by yokitane         ###   ########.fr       */
+/*   Updated: 2025/06/26 19:01:56 by yokitane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	Account::_totalNbDeposits = 0;
 int	Account::_totalNbWithdrawals = 0;
 
 Account::Account(int initial_deposit) :
-	_accountIndex(_nbAccounts - 1),_amount(initial_deposit),
+	_accountIndex(_nbAccounts),_amount(initial_deposit),
 	_nbDeposits(0),_nbWithdrawals(0)
 {
 	Account::_nbAccounts++;
@@ -90,7 +90,7 @@ void Account::displayStatus( void ) const
 {
 	_displayTimestamp();
 	std::cout << "index:" << _accountIndex
-				<< ";amount" << _amount
+				<< ";amount:" << _amount
 				<< ";deposits:" << _nbDeposits
 				<< ";withdrawals:" << _nbWithdrawals << std::endl;
 }
@@ -108,5 +108,5 @@ void Account::_displayTimestamp( void )
 			  << std::setfill('0') << std::setw(2) << timeinfo->tm_hour
 			  << std::setfill('0') << std::setw(2) << timeinfo->tm_min
 			  << std::setfill('0') << std::setw(2) << timeinfo->tm_sec
-			  << "]";
+			  << "] ";
 }
