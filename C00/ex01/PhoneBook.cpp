@@ -6,7 +6,7 @@
 /*   By: yokitane <yokitane@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 21:21:42 by yokitane          #+#    #+#             */
-/*   Updated: 2025/06/26 02:21:14 by yokitane         ###   ########.fr       */
+/*   Updated: 2025/06/26 16:16:55 by yokitane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,13 @@ void PhoneBook::addContact(const Contact &contact)
 {
 	if (_size < 8)
 	{
-		_contacts[_index] = contact;
+		_contacts[_index++] = contact;
 		_size++;
 	}
 	else
-		_contacts[_index] = contact;
-	_index = (_index + 1) % 8; // Circular index
+		_contacts[_index++] = contact;
+	if (_index >= 8)
+		_index = 0;
 }
 /**
  * @brief Retrieves a contact by index.
@@ -45,5 +46,8 @@ Contact PhoneBook::getContact(int index) const
 		return Contact();
 	return _contacts[index];
 }
-
+/**
+ * @brief
+ * @return int
+ */
 int PhoneBook::getSize(void) const { return(_size); }

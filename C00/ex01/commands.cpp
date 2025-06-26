@@ -6,7 +6,7 @@
 /*   By: yokitane <yokitane@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 02:50:58 by yokitane          #+#    #+#             */
-/*   Updated: 2025/06/26 03:55:44 by yokitane         ###   ########.fr       */
+/*   Updated: 2025/06/26 16:11:17 by yokitane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,32 +30,20 @@ void addContact(PhoneBook &phonebook)
 
 	std::cout << "Enter first name: ";
 	std::cin >> firstName;
-	if (firstName == "")
-	{
-		std::cout << "First name cannot be empty." << std::endl;
-		 return ;
-	}
+	if(std::cin.eof())
+		exit(0);
 	std::cout << "Enter last name: ";
 	std::cin >> lastName;
-	if (lastName == "")
-	{
-		std::cout << "Last name cannot be empty." << std::endl;
-		 return ;
-	}
+	if(std::cin.eof())
+		exit(0);
 	std::cout << "Enter Nickname: ";
 	std::cin >> nickName;
-	if (nickName == "")
-	{
-		std::cout << "Nickname cannot be empty." << std::endl;
-		 return ;
-	}
+	if(std::cin.eof())
+		exit(0);
 	std::cout << "Enter phone number: ";
 	std::cin >> phoneNumber;
-	if (phoneNumber == "")
-	{
-		std::cout << "Phone number cannot be empty." << std::endl;
-		return ;
-	}
+	if(std::cin.eof())
+		exit(0);
 	if (!isPhoneNumberValid(phoneNumber))
 	{
 		std::cout << "invalid phone number" << std::endl;
@@ -63,11 +51,8 @@ void addContact(PhoneBook &phonebook)
 	}
 	std::cout << "Enter darkest secret: ";
 	std::cin >> darkestSecret;
-	if(darkestSecret == "")
-	{
-		std::cout << "You have to say it. no running away." << std::endl;
-		return ;
-	}
+	if(std::cin.eof())
+		exit(0);
 	Contact newContact = Contact(firstName, lastName, nickName, phoneNumber, darkestSecret);
 	phonebook.addContact(newContact);
 }
@@ -117,21 +102,16 @@ int isNumeric(const std::string &str)
 	return 1;
 }
 
-void searchContacts(PhoneBook &phonebook)
+void getIndexRequest(PhoneBook phonebook)
 {
 	std::string input;
 	int index;
-
-	if (phonebook.getSize() == 0)
-	{
-		std::cout << "PhoneBook is empty. No contacts to display." << std::endl;
-		return;
-	}
-	displayContacts(phonebook);
 	while (true)
 	{
 		std::cout << "Enter the index of the contact to display (or ':q' to quit): ";
 		std::cin >> input;
+		if (std::cin.eof())
+			exit(0);
 		if (input == ":q")
 			return;
 		if (input.empty() || !isNumeric(input))
@@ -156,4 +136,15 @@ void searchContacts(PhoneBook &phonebook)
 		std::cout << std::endl;
 		break;
 	}
+}
+
+void searchContacts(PhoneBook &phonebook)
+{
+	if (phonebook.getSize() == 0)
+	{
+		std::cout << "PhoneBook is empty. Lets get started by adding some contacts!." << std::endl;
+		return;
+	}
+	displayContacts(phonebook);
+	getIndexRequest(phonebook);
 }

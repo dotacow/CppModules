@@ -6,14 +6,13 @@
 /*   By: yokitane <yokitane@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 02:22:05 by yokitane          #+#    #+#             */
-/*   Updated: 2025/06/26 03:02:35 by yokitane         ###   ########.fr       */
+/*   Updated: 2025/06/26 16:15:35 by yokitane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include <iostream>
 # include "PhoneBook.hpp"
 # include "commands.hpp"
-
 int main(void)
 {
 	PhoneBook phonebook = PhoneBook();
@@ -23,7 +22,9 @@ int main(void)
 	while (true)
 	{
 		std::cout << "Enter a command (ADD, SEARCH, EXIT): ";
-		std::cin>> command;
+		std::cin >> command;
+		if (std::cin.eof())
+			return (0);
 		if (command == "ADD")
 			addContact(phonebook);
 		else if (command == "SEARCH")
@@ -31,7 +32,7 @@ int main(void)
 		else if (command == "EXIT")
 		{
 			std::cout << "Terminating the one of a kind MACPBook. Goodbye!" << std::endl;
-			break;
+			break ;
 		}
 		else
 			std::cout << "Invalid command. Please try again." << std::endl;
