@@ -1,7 +1,7 @@
-CXX = c++
+CXX = g++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
-SRCS = main.cpp Contact.cpp PhoneBook.cpp Commands.cpp
+SRCS = main.cpp Contact.cpp PhoneBook.cpp commands.cpp
 
 ODIR = ofiles
 OBJS = $(addprefix $(ODIR)/,$(notdir $(SRCS:.cpp=.o)))
@@ -11,19 +11,19 @@ NAME = macpbook
 all: $(NAME)
 
 $(NAME): $(OBJS)
-    $(CXX) $(OBJS) $(CXXFLAGS) -o $(NAME)
+	$(CXX) $(OBJS) $(CXXFLAGS) -o $(NAME)
 
 $(ODIR)/%.o: %.cpp | $(ODIR)
-    $(CXX) $(CXXFLAGS) -c $< -o $@
+	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 $(ODIR):
-    mkdir -p $(ODIR)
+	mkdir -p $(ODIR)
 
 clean:
-    rm -rf $(ODIR)
+	rm -rf $(ODIR)
 
 fclean: clean
-    rm -f $(NAME)
+	rm -f $(NAME)
 
 re: fclean all
 

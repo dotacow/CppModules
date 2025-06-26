@@ -6,7 +6,7 @@
 /*   By: yokitane <yokitane@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 21:36:05 by yokitane          #+#    #+#             */
-/*   Updated: 2025/06/26 02:20:57 by yokitane         ###   ########.fr       */
+/*   Updated: 2025/06/26 03:35:56 by yokitane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define CONTACT_HPP
 
 # include <string>
-
+# include <sstream>
 class Contact
 {
 	private:
