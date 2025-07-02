@@ -6,7 +6,7 @@
 /*   By: yokitane <yokitane@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/02 22:45:52 by yokitane          #+#    #+#             */
-/*   Updated: 2025/07/02 23:16:42 by yokitane         ###   ########.fr       */
+/*   Updated: 2025/07/03 00:17:18 by yokitane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ class Zombie
 		std::string _name;
 	public:
 		///constructors and destructors:
+		Zombie(void);
 		Zombie(std::string name);
 		~Zombie(void);
 		///setters and getters
@@ -27,7 +28,8 @@ class Zombie
 		///member functions
 		void		announce(void) const;
 };
-namespace zmb
+
+namespace ZUtils
 {
 	/**
 	 * @brief
@@ -35,7 +37,7 @@ namespace zmb
 	 * @param name
 	 * @return Zombie*
 	 */
-	Zombie* newZombie(std::string name);
+	Zombie *newZombie(std::string name);
 	/**
 	 * @brief
 	 * Creates a Zombie instance on the stack, announces it, and then destroys it
