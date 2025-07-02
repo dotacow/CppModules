@@ -1,10 +1,10 @@
 CXX = g++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
-SRCS = tests.cpp Account.cpp
+SRC = tests.cpp Account.cpp
 
 ODIR = ofiles
-OBJS = $(addprefix $(ODIR)/,$(notdir $(SRCS:.cpp=.o)))
+OBJS = $(addprefix $(ODIR)/,$(notdir $(SRC:.cpp=.o)))
 
 NAME = plzusegitnexttime
 
