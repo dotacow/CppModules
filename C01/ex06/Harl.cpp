@@ -6,7 +6,7 @@
 /*   By: yokitane <yokitane@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 23:16:36 by yokitane          #+#    #+#             */
-/*   Updated: 2025/07/04 00:03:19 by yokitane         ###   ########.fr       */
+/*   Updated: 2025/07/04 00:03:24 by yokitane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,5 +69,8 @@ void Harl::complain(std::string level)
 		&Harl::error,
 		&Harl::insignificant,
 	};
+	if (getLevel(level) != INSIGNIFICANT)
+		std::cerr << "[ " << level << " ]" << std::endl;
 	(this->*horrors[getLevel(level)])();
+	std::cerr << std::endl;
 }
