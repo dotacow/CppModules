@@ -1,12 +1,12 @@
 CXX = g++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
-SRC = main.cpp HumanA.cpp humanB.cpp Weapon.cpp
+SRC = main.cpp HumanA.cpp HumanB.cpp Weapon.cpp
 
 ODIR = ofiles
 OBJS = $(addprefix $(ODIR)/,$(notdir $(SRC:.cpp=.o)))
 
-NAME = PVZ2
+NAME = violence
 
 all: $(NAME)
 
