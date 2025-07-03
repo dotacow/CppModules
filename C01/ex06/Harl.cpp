@@ -6,7 +6,7 @@
 /*   By: yokitane <yokitane@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 23:16:36 by yokitane          #+#    #+#             */
-/*   Updated: 2025/07/04 00:03:24 by yokitane         ###   ########.fr       */
+/*   Updated: 2025/07/04 00:17:26 by yokitane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 # include <iostream>
 
 Harl::Harl( void ) {
-	_messages[0]= "I love having extra bacon for my 7XL-double-cheese-triple-pickle-special-ketchup burger. I really do!";
-	_messages[1] = "I cannot believe adding extra bacon costs more money. You didn’t put enough bacon in my burger! If you did, I wouldn’t be asking for more!";
+	_messages[0]= "I love having extra bacon for my 7XL-double-cheese-triple-pickle-special-ketchup burger.\nI really do!";
+	_messages[1] = "I cannot believe adding extra bacon costs more money.\nYou didn’t put enough bacon in my burger! If you did, I wouldn’t be asking for more!";
 	_messages[2] = "I think I deserve to have some extra bacon for free.\nI’ve been coming for years, whereas you started working here just last month.";
 	_messages[3] = "This is unacceptable! I want to speak to the manager now.";
 	_messages[4] = "[ Probably complaining about insignificant problems ]";
