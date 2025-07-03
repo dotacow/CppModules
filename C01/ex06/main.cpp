@@ -6,7 +6,7 @@
 /*   By: yokitane <yokitane@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 23:45:08 by yokitane          #+#    #+#             */
-/*   Updated: 2025/07/04 00:22:20 by yokitane         ###   ########.fr       */
+/*   Updated: 2025/07/04 00:24:06 by yokitane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,10 @@ int main (int argc, char **argv)
 			//fallthrough
 			case Harl::ERROR:
 				harl.complain("ERROR");
-				return (0);
+				break;
 			default:
 				harl.complain("INSIGNIFICANT");
-				return (0);
+				break;
 		}
 	// 	level++;
 	// }
