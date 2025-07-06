@@ -6,7 +6,7 @@
 /*   By: yokitane <yokitane@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 23:16:36 by yokitane          #+#    #+#             */
-/*   Updated: 2025/07/06 05:36:24 by yokitane         ###   ########.fr       */
+/*   Updated: 2025/07/06 05:42:13 by yokitane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,14 +57,11 @@ void Harl::insignificant (void )
 
 Harl::levels Harl::getLevel(std::string level)
 {
-	if (level == "DEBUG")
-		return (DEBUG);
-	else if (level == "INFO")
-		return (INFO);
-	else if (level == "WARNING")
-		return (WARNING);
-	else if (level == "ERROR")
-		return (ERROR);
+	for (int i = 0; i < 5; i++)
+	{
+		if (level == _headers[i])
+			return static_cast<levels>(i);
+	}
 	return (INSIGNIFICANT);
 }
 
