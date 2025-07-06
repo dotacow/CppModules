@@ -6,7 +6,7 @@
 /*   By: yokitane <yokitane@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/06 05:18:44 by yokitane          #+#    #+#             */
-/*   Updated: 2025/07/06 16:45:27 by yokitane         ###   ########.fr       */
+/*   Updated: 2025/07/06 17:16:34 by yokitane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,65 @@ bool Fixed::operator==(const Fixed &other) const
 bool Fixed::operator!=(const Fixed &other) const
 {
 	return (this->_rawBits != other.getRawBits());
+};
+
+Fixed Fixed::operator+(const Fixed &other) const
+{
+	Fixed result;
+	result.setRawBits(this->_rawBits + other.getRawBits());
+	return (result);
+};
+
+Fixed Fixed::operator-(const Fixed &other) const
+{
+	Fixed result;
+	result.setRawBits(this->_rawBits - other.getRawBits());
+	return (result);
+};
+
+Fixed Fixed::operator*(const Fixed &other) const
+{
+	Fixed result;
+	result.setRawBits((this->_rawBits * other.getRawBits()) >> _fractionBits);
+	return (result);
+};
+
+Fixed Fixed::operator/(const Fixed &other) const
+{
+	if (other.getRawBits() == 0)
+	{
+		std::cerr << "Error: Division by zero" << std::endl;
+		return (Fixed());
+	}
+	Fixed result;
+	result.setRawBits((this->_rawBits << _fractionBits) / other.getRawBits());
+	return (result);
+};
+
+Fixed &Fixed::operator++()
+{
+	this->_rawBits++;
+	return (*this);
+};
+
+Fixed &Fixed::operator--()
+{
+	this->_rawBits--;
+	return (*this);
+};
+
+Fixed Fixed::operator++(int)
+{
+	Fixed temp(*this);
+	this->_rawBits++;
+	return (temp);
+};
+
+Fixed Fixed::operator--(int)
+{
+	Fixed temp(*this);
+	this->_rawBits--;
+	return (temp);
 };
 
 std::ostream &operator<<(std::ostream &o, Fixed const &fixedPoint)
