@@ -6,7 +6,7 @@
 /*   By: yokitane <yokitane@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 21:25:52 by yokitane          #+#    #+#             */
-/*   Updated: 2025/07/03 22:31:12 by yokitane         ###   ########.fr       */
+/*   Updated: 2025/07/06 05:13:34 by yokitane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,4 +69,5 @@ int main (int argc, char **argv)
 	}
 	inFile.close();
 	outFile.close();
+	return (0);
 }

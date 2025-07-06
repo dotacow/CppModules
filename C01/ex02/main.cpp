@@ -6,7 +6,7 @@
 /*   By: yokitane <yokitane@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 21:08:16 by yokitane          #+#    #+#             */
-/*   Updated: 2025/07/03 21:11:27 by yokitane         ###   ########.fr       */
+/*   Updated: 2025/07/06 05:14:07 by yokitane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,4 +25,5 @@ int main (void)
 	std::cout << "value of the string variable: " << name << std::endl
 				<< "value pointed to by stringPTR: " << *stringPTR << std::endl
 				<< "value pointed to by stringREF: " << stringREF << std::endl;
+	return (0);
 }
