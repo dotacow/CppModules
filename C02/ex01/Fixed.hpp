@@ -6,7 +6,7 @@
 /*   By: yokitane <yokitane@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/06 05:18:45 by yokitane          #+#    #+#             */
-/*   Updated: 2025/07/06 13:48:48 by yokitane         ###   ########.fr       */
+/*   Updated: 2025/07/06 18:54:29 by yokitane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ public:
 	int		getRawBits( void ) const;
 	void	setRawBits( int const raw );
 	int		toInt() const;
+	float	toFloat() const;
 };
 //non member overloads and functions
 	std::ostream &operator<<(std::ostream &o,Fixed const &fixedPoint) ;

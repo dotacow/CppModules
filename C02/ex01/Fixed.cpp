@@ -6,7 +6,7 @@
 /*   By: yokitane <yokitane@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/06 05:18:44 by yokitane          #+#    #+#             */
-/*   Updated: 2025/07/06 15:31:31 by yokitane         ###   ########.fr       */
+/*   Updated: 2025/07/06 18:54:50 by yokitane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ Fixed &Fixed::operator=(const Fixed &other)
 
 std::ostream &operator<<(std::ostream &o, Fixed const &fixedPoint)
 {
-	o << fixedPoint.toInt();
+	o << fixedPoint.toFloat();
 	return (o);
 };
 
@@ -65,6 +65,12 @@ void Fixed::setRawBits(int const raw)
 	std::cout << "SetRawBits member function called\n";
 	this->_rawBits = raw;
 };
+
+float Fixed::toFloat() const
+{
+	return static_cast<float>(_rawBits) / (1 << _fractionBits);
+}
+
 
 int Fixed::toInt() const
 {
