@@ -6,7 +6,7 @@
 /*   By: yokitane <yokitane@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/06 20:42:40 by yokitane          #+#    #+#             */
-/*   Updated: 2025/07/07 01:08:00 by yokitane         ###   ########.fr       */
+/*   Updated: 2025/07/07 01:15:36 by yokitane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,6 @@ namespace quickmafs
 	bool bsp(Point const a, Point const b, Point const c, Point const point)
 	{
 		//barycentric coordinates approach
-		Fixed area = (b.getX() - a.getX()) * (c.getY() - a.getY()) -
-						(c.getX() - a.getX()) * (b.getY() - a.getY());
-
 		Fixed s = (a.getX() - point.getX()) * (b.getY() - point.getY()) -
 						(b.getX() - point.getX()) * (a.getY() - point.getY());
 
