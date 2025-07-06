@@ -6,7 +6,7 @@
 /*   By: yokitane <yokitane@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/06 05:18:42 by yokitane          #+#    #+#             */
-/*   Updated: 2025/07/06 19:00:39 by yokitane         ###   ########.fr       */
+/*   Updated: 2025/07/06 19:05:57 by yokitane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int main( void )
 	Fixed temp(5);
 	std::cout << a << std::endl;
 	std::cout << ++a << std::endl;
-	std::cout << (temp=a--) << std::endl;
+	std::cout << (temp = temp + 1 / 2) << std::endl;
 	std::cout << a++ << std::endl;
 	std::cout << a << std::endl;
 	std::cout << b << std::endl;
