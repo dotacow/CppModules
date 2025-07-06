@@ -6,7 +6,7 @@
 /*   By: yokitane <yokitane@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/06 05:18:44 by yokitane          #+#    #+#             */
-/*   Updated: 2025/07/06 17:16:34 by yokitane         ###   ########.fr       */
+/*   Updated: 2025/07/06 18:55:14 by yokitane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ Fixed::Fixed(const float &flt)
 Fixed::~Fixed(void)
 {
 };
-
+/*****operator overloads:*****/
 Fixed &Fixed::operator=(const Fixed &other)
 {
 	this->_rawBits = other.getRawBits();
@@ -134,10 +134,11 @@ Fixed Fixed::operator--(int)
 
 std::ostream &operator<<(std::ostream &o, Fixed const &fixedPoint)
 {
-	o << fixedPoint.toInt();
+	o << fixedPoint.toFloat();
 	return (o);
 };
 
+/*****member functions*****/
 int Fixed::getRawBits(void) const
 {
 	return (_rawBits);
@@ -152,3 +153,30 @@ int Fixed::toInt() const
 {
 	return (_rawBits >> _fractionBits);
 }
+
+float Fixed::toFloat() const
+{
+	return static_cast<float>(_rawBits) / (1 << _fractionBits);
+}
+
+/*****function overloads*****/
+
+Fixed &Fixed::min(Fixed &a, Fixed &b)
+{
+	return (a < b ? a : b);
+};
+
+Fixed &Fixed::max(Fixed &a, Fixed &b)
+{
+	return (a > b ? a : b);
+};
+
+const Fixed &Fixed::min(const Fixed &a, const Fixed &b)
+{
+	return (a < b ? a : b);
+};
+
+const Fixed &Fixed::max(const Fixed &a, const Fixed &b)
+{
+	return (a > b ? a : b);
+};

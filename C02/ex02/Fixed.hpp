@@ -6,7 +6,7 @@
 /*   By: yokitane <yokitane@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/06 05:18:45 by yokitane          #+#    #+#             */
-/*   Updated: 2025/07/06 16:36:58 by yokitane         ###   ########.fr       */
+/*   Updated: 2025/07/06 18:53:35 by yokitane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ public:
 	int		getRawBits( void ) const;
 	void	setRawBits( int const raw );
 	int		toInt() const;
+	float	toFloat() const;
 //member function overloads
 	static Fixed &min(Fixed &a, Fixed &b);
 	static const Fixed &min(const Fixed &a, const Fixed &b);
