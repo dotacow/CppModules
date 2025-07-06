@@ -6,7 +6,7 @@
 /*   By: yokitane <yokitane@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 23:16:36 by yokitane          #+#    #+#             */
-/*   Updated: 2025/07/04 00:17:26 by yokitane         ###   ########.fr       */
+/*   Updated: 2025/07/06 04:13:39 by yokitane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,11 @@ Harl::Harl( void ) {
 	_messages[2] = "I think I deserve to have some extra bacon for free.\nI’ve been coming for years, whereas you started working here just last month.";
 	_messages[3] = "This is unacceptable! I want to speak to the manager now.";
 	_messages[4] = "[ Probably complaining about insignificant problems ]";
-
+	_headers[0] = "DEBUG";
+	_headers[1] = "INFO";
+	_headers[2] = "WARNING";
+	_headers[3] = "ERROR";
+	_headers[4] = "INSIGNIFICANT";
 };
 Harl::~Harl( void ) {};
 
@@ -47,14 +51,11 @@ void Harl::insignificant (void )
 
 Harl::levels Harl::getLevel(std::string level)
 {
-	if (level == "DEBUG")
-		return (DEBUG);
-	else if (level == "INFO")
-		return (INFO);
-	else if (level == "WARNING")
-		return (WARNING);
-	else if (level == "ERROR")
-		return (ERROR);
+	for (int i = 0; i < 5; i++)
+	{
+		if (level == _headers[i])
+			return static_cast<levels>(i);
+	}
 	return (INSIGNIFICANT);
 }
 
