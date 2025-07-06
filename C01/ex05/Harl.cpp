@@ -6,25 +6,31 @@
 /*   By: yokitane <yokitane@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 23:16:36 by yokitane          #+#    #+#             */
-/*   Updated: 2025/07/06 04:14:18 by yokitane         ###   ########.fr       */
+/*   Updated: 2025/07/06 05:36:24 by yokitane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "Harl.hpp"
 # include <iostream>
 
-Harl::Harl( void ) {
-	_messages[0]= "I love having extra bacon for my 7XL-double-cheese-triple-pickle-special-ketchup burger.\nI really do!";
-	_messages[1] = "I cannot believe adding extra bacon costs more money.\nYou didn’t put enough bacon in my burger! If you did, I wouldn’t be asking for more!";
-	_messages[2] = "I think I deserve to have some extra bacon for free.\nI’ve been coming for years, whereas you started working here just last month.";
-	_messages[3] = "This is unacceptable! I want to speak to the manager now.";
-	_messages[4] = "[ Probably complaining about insignificant problems ]";
-	_headers[0] = "DEBUG";
-	_headers[1] = "INFO";
-	_headers[2] = "WARNING";
-	_headers[3] = "ERROR";
-	_headers[4] = "INSIGNIFICANT";
+const std::string Harl::_messages[5] = {
+	"I love having extra bacon for my 7XL-double-cheese-triple-pickle-special-ketchup burger.\nI really do!",
+	"I cannot believe adding extra bacon costs more money.\nYou didn’t put enough bacon in my burger! If you did, I wouldn’t be asking for more!",
+	"I think I deserve to have some extra bacon for free.\nI’ve been coming for years, whereas you started working here just last month.",
+	"This is unacceptable! I want to speak to the manager now.",
+	"[ Probably complaining about insignificant problems ]"
 };
+
+const std::string Harl::_headers[5] = {
+	"DEBUG",
+	"INFO",
+	"WARNING",
+	"ERROR",
+	"INSIGNIFICANT"
+};
+
+Harl::Harl( void ) {};
+
 Harl::~Harl( void ) {};
 
 void Harl::debug (void )
