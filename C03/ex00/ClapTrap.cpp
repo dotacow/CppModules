@@ -43,6 +43,11 @@ ClapTrap::~ClapTrap()
 	std::cout<< _name << ": Change the world, my final message. goodbye.";
 }
 
+std::string ClapTrap::getName() const { return (_name);}
+
 unsigned int ClapTrap::getEP() const {return (_energyPoints);}
 
-unsigned int ClapTrap::getATK() const {};
+unsigned int ClapTrap::getATK() const {return (_attackDamage);}
+
+unsigned int ClapTrap::getHP() const {return (_hitPoints);}
+
