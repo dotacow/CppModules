@@ -18,12 +18,17 @@ class ClapTrap
 {
 	public:
 		ClapTrap();
-		ClapTrap(std::string name,int hp,int ep,int atk);
-		~ClapTrap();
+		ClapTrap(std::string name);
 		ClapTrap &operator=(ClapTrap &other);
+		ClapTrap(ClapTrap &other);
+		~ClapTrap();
 		void attack(const std::string &target);
 		void takeDamage(unsigned int amount);
 		void beRepaired(unsigned int amount);
+		std::string getName() const;
+		unsigned int getHP() const;
+		unsigned int getEP() const;
+		unsigned int getATK() const;
 	private:
 		std::string		_name;
 		unsigned int	_hitPoints;
