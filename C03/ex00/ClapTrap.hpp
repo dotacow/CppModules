@@ -22,13 +22,15 @@ class ClapTrap
 		ClapTrap &operator=(ClapTrap &other);
 		ClapTrap(ClapTrap &other);
 		~ClapTrap();
-		void attack(const std::string &target);
-		void takeDamage(unsigned int amount);
-		void beRepaired(unsigned int amount);
-		std::string getName() const;
-		unsigned int getHP() const;
-		unsigned int getEP() const;
-		unsigned int getATK() const;
+		void			attack(const std::string &target);
+		void			takeDamage(unsigned int amount);
+		void			beRepaired(unsigned int amount);
+		std::string		getName() const;
+		unsigned int	getHP() const;
+		unsigned int	getEP() const;
+		unsigned int	getATK() const;
+		bool			isAlive() const;
+		bool			isCharged() const;
 	private:
 		std::string		_name;
 		unsigned int	_hitPoints;

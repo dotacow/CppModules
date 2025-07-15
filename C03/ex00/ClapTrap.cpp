@@ -40,14 +40,53 @@ ClapTrap &ClapTrap::operator=(ClapTrap &other)
 
 ClapTrap::~ClapTrap()
 {
-	std::cout<< _name << ": Change the world, my final message. goodbye.";
+	std::cout<< _name << ": Change the world, my final message. goodbye.\n";
 }
 
 std::string ClapTrap::getName() const { return (_name);}
-
 unsigned int ClapTrap::getEP() const {return (_energyPoints);}
-
 unsigned int ClapTrap::getATK() const {return (_attackDamage);}
-
 unsigned int ClapTrap::getHP() const {return (_hitPoints);}
 
+void ClapTrap::attack(const std::string &target)
+{
+	if (this->isAlive() && this->isCharged())
+	{
+		std::cout << _name << " Attacks " << target << ", causing " << _attackDamage
+		<< " points of damage!\n";
+		_energyPoints--;
+	}
+}
+
+void	ClapTrap::takeDamage(unsigned int amount)
+{
+	if (_hitPoints <= 0)
+		std::cout <<"kicking a robot while they're down? straight up immoral.\n";
+	_hitPoints -= amount;
+	std::cout << _name << " was hit for " << amount <<" damage, HP: " << _hitPoints << "\n";
+}
+
+void ClapTrap::beRepaired(unsigned int amount)
+{
+	if (this->isAlive() && this->isCharged())
+	{
+		_hitPoints += amount;
+		std::cout << _name << "heals for " << amount << ", HP:" << _hitPoints <<"\n";
+	}
+}
+
+bool ClapTrap::isAlive() const
+{
+	if (_hitPoints > 0)
+		return (true);
+	std::cout << _name << " is dead and can't do your request!\n";
+	return (false);
+}
+
+bool ClapTrap::isCharged() const
+{
+	if (_energyPoints > 0)
+		return (true);
+	std::cout << _name << " is all outta gas!\n";
+	return (false);
+}
