@@ -6,7 +6,7 @@
 /*   By: yokitane <yokitane@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/14 18:41:10 by yokitane          #+#    #+#             */
-/*   Updated: 2025/07/15 20:54:39 by yokitane         ###   ########.fr       */
+/*   Updated: 2025/07/15 21:46:52 by yokitane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ ClapTrap::ClapTrap(std::string name): _name(name), _hitPoints(10), _energyPoints
 ClapTrap::ClapTrap(ClapTrap &other)
 {
 	*this = other;
-	std::cout<< _name << ": this is "<< _name << " from the *copy* ClapTrap class\n";
+	std::cout<< _name << ": this is "<< _name << " from the *copy* constructer ClapTrap class\n";
 }
 
 ClapTrap &ClapTrap::operator=(ClapTrap &other)
@@ -48,6 +48,9 @@ unsigned int	ClapTrap::getEP() const {return (_energyPoints);}
 unsigned int	ClapTrap::getATK() const {return (_attackDamage);}
 unsigned int	ClapTrap::getHP() const {return (_hitPoints);}
 void			ClapTrap::setName(std::string name) { _name = name; }
+void			ClapTrap::setHP(unsigned int hp) { _hitPoints = hp; }
+void			ClapTrap::setEP(unsigned int ep) { _energyPoints = ep;}
+void			ClapTrap::setATK(unsigned int atk) { _attackDamage = atk; }
 
 void ClapTrap::attack(const std::string &target)
 {

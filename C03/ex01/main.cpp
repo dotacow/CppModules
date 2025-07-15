@@ -6,27 +6,28 @@
 /*   By: yokitane <yokitane@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/14 17:42:48 by yokitane          #+#    #+#             */
-/*   Updated: 2025/07/14 17:42:49 by yokitane         ###   ########.fr       */
+/*   Updated: 2025/07/15 21:53:56 by yokitane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ClapTrap.hpp"
+#include "ScavTrap.hpp"
 
 int main (void)
 {
-	ClapTrap robo1 ("CL4P-TP");
-	ClapTrap robo2 ("ROBO2");
-	for (int i = 0; i < 9; i++)
-	{
-		robo1.attack(robo2.getName());
-		robo2.takeDamage(1);
-	}
-	ClapTrap robo3(robo2);
-	robo3.setName("ROBO3");
-	robo1.attack(robo2.getName());
-	robo2.takeDamage(1);
-	robo2.takeDamage(1);
-	robo3.beRepaired(5);
-	robo1.beRepaired(5);
-	robo2.beRepaired(10);
+	ClapTrap claptrap("Clap");
+	ScavTrap scavtrap("Scav");
+
+	claptrap.attack("Scavvy");
+	scavtrap.attack("Clappy");
+
+	claptrap.takeDamage(10);
+	scavtrap.takeDamage(10);
+
+	claptrap.beRepaired(5);
+	scavtrap.beRepaired(5);
+
+	scavtrap.guardGate();
+	scavtrap.attack("Clappy");
+	scavtrap.takeDamage(10);
+	return (0);
 }
