@@ -1,33 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   FragTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yokitane <yokitane@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/14 17:42:48 by yokitane          #+#    #+#             */
-/*   Updated: 2025/07/15 22:29:34 by yokitane         ###   ########.fr       */
+/*   Created: 2025/07/15 22:29:51 by yokitane          #+#    #+#             */
+/*   Updated: 2025/07/15 23:43:17 by yokitane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ScavTrap.hpp"
+#pragma once
+#include "ClapTrap.hpp"
 
-int main (void)
+class FragTrap : virtual public ClapTrap
 {
-	ClapTrap claptrap("Clap");
-	ScavTrap scavtrap("Scav");
+	public:
+		FragTrap();
+		FragTrap(std::string name);
+		FragTrap(FragTrap &other);
+		FragTrap &operator=(FragTrap &other);
+		~FragTrap();
+		void highFivesGuys(void);
+		void attack(const std::string &target);
 
-	claptrap.attack("Scav");
-	scavtrap.attack("Clap");
-
-	claptrap.takeDamage(10);
-	scavtrap.takeDamage(10);
-
-	claptrap.beRepaired(5);
-	scavtrap.beRepaired(5);
-
-	scavtrap.guardGate();
-	scavtrap.attack("Clappy");
-	scavtrap.takeDamage(10);
-	return (0);
-}
+};

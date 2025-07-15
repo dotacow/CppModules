@@ -6,28 +6,21 @@
 /*   By: yokitane <yokitane@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/14 17:42:48 by yokitane          #+#    #+#             */
-/*   Updated: 2025/07/15 22:29:34 by yokitane         ###   ########.fr       */
+/*   Updated: 2025/07/16 00:07:50 by yokitane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScavTrap.hpp"
+#include "FragTrap.hpp"
+#include "DiamondTrap.hpp"
 
 int main (void)
 {
 	ClapTrap claptrap("Clap");
 	ScavTrap scavtrap("Scav");
+	FragTrap fragtrap("Frag");
+	DiamondTrap diamondtrap("Diamond");
 
-	claptrap.attack("Scav");
-	scavtrap.attack("Clap");
-
-	claptrap.takeDamage(10);
-	scavtrap.takeDamage(10);
-
-	claptrap.beRepaired(5);
-	scavtrap.beRepaired(5);
-
-	scavtrap.guardGate();
-	scavtrap.attack("Clappy");
-	scavtrap.takeDamage(10);
+	diamondtrap.whoAmI();
 	return (0);
 }
