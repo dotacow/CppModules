@@ -31,6 +31,7 @@ class ClapTrap
 		unsigned int	getATK() const;
 		bool			isAlive() const;
 		bool			isCharged() const;
+		void			setName(std::string name);
 	private:
 		std::string		_name;
 		unsigned int	_hitPoints;

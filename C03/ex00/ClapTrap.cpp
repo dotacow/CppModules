@@ -13,20 +13,20 @@
 #include "ClapTrap.hpp"
 #include <iostream>
 
-ClapTrap::ClapTrap():_attackDamage(0),_energyPoints(10),_hitPoints(10),_name("")
+ClapTrap::ClapTrap():_name(""), _hitPoints(10), _energyPoints(10), _attackDamage(0)
 {
 	std::cout << "default claptrap constructer called\n";
 };
 
-ClapTrap::ClapTrap(std::string name): _attackDamage(0),_energyPoints(10),_hitPoints(10),_name(name)
+ClapTrap::ClapTrap(std::string name): _name(name), _hitPoints(10), _energyPoints(10), _attackDamage(0)
 {
 	std::cout<< _name << ": this is "<< _name << " from the ClapTrap class\n";
 };
 
 ClapTrap::ClapTrap(ClapTrap &other)
 {
-	std::cout<< _name << ": this is "<< _name << " from the *copy* ClapTrap class\n";
 	*this = other;
+	std::cout<< _name << ": this is "<< _name << " from the *copy* ClapTrap class\n";
 }
 
 ClapTrap &ClapTrap::operator=(ClapTrap &other)
@@ -43,16 +43,17 @@ ClapTrap::~ClapTrap()
 	std::cout<< _name << ": Change the world, my final message. goodbye.\n";
 }
 
-std::string ClapTrap::getName() const { return (_name);}
-unsigned int ClapTrap::getEP() const {return (_energyPoints);}
-unsigned int ClapTrap::getATK() const {return (_attackDamage);}
-unsigned int ClapTrap::getHP() const {return (_hitPoints);}
+std::string		ClapTrap::getName() const { return (_name);}
+unsigned int	ClapTrap::getEP() const {return (_energyPoints);}
+unsigned int	ClapTrap::getATK() const {return (_attackDamage);}
+unsigned int	ClapTrap::getHP() const {return (_hitPoints);}
+void			ClapTrap::setName(std::string name) { _name = name; }
 
 void ClapTrap::attack(const std::string &target)
 {
 	if (this->isAlive() && this->isCharged())
 	{
-		std::cout << _name << " Attacks " << target << ", causing " << _attackDamage
+		std::cout << _name << " Attacks " << target << ", with a strength of " << _attackDamage
 		<< " points of damage!\n";
 		_energyPoints--;
 	}
@@ -60,9 +61,15 @@ void ClapTrap::attack(const std::string &target)
 
 void	ClapTrap::takeDamage(unsigned int amount)
 {
-	if (_hitPoints <= 0)
+	if (_hitPoints == 0)
+	{
 		std::cout <<"kicking a robot while they're down? straight up immoral.\n";
-	_hitPoints -= amount;
+		amount = 0;
+	}
+	if (amount >= _hitPoints)
+		 _hitPoints = 0;
+	else
+		_hitPoints -= amount;
 	std::cout << _name << " was hit for " << amount <<" damage, HP: " << _hitPoints << "\n";
 }
 
@@ -71,7 +78,8 @@ void ClapTrap::beRepaired(unsigned int amount)
 	if (this->isAlive() && this->isCharged())
 	{
 		_hitPoints += amount;
-		std::cout << _name << "heals for " << amount << ", HP:" << _hitPoints <<"\n";
+		_energyPoints--;
+		std::cout << _name << " heals for " << amount << ", HP:" << _hitPoints <<"\n";
 	}
 }
 
