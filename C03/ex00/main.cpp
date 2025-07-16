@@ -6,7 +6,7 @@
 /*   By: yokitane <yokitane@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/14 17:42:48 by yokitane          #+#    #+#             */
-/*   Updated: 2025/07/14 17:42:49 by yokitane         ###   ########.fr       */
+/*   Updated: 2025/07/16 17:30:13 by yokitane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,4 +29,5 @@ int main (void)
 	robo3.beRepaired(5);
 	robo1.beRepaired(5);
 	robo2.beRepaired(10);
+	return (0);
 }
