@@ -16,30 +16,23 @@ DEPS = $(OBJS:.o=.d)
 # Executable name
 NAME = TheInkSpots
 
-# Default target
 all: $(NAME)
 
-# Link object files into binary
 $(NAME): $(OBJS)
 	$(CXX) $(CXXFLAGS) $(OBJS) -o $(NAME)
 
-# Compile source to object
 $(ODIR)/%.o: $(SRCDIR)/%.cpp | $(ODIR)
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
-# Create object directory if missing
 $(ODIR):
 	mkdir -p $(ODIR)
 
-# Clean object files
 clean:
 	rm -rf $(ODIR)
 
-# Clean everything
 fclean: clean
 	rm -f $(NAME)
 
-# Rebuild everything
 re: fclean all
 
 # Include header dependencies
