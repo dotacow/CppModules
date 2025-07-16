@@ -4,11 +4,10 @@ CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -Wshadow -MMD -MP -Iincludes
 
 # Directories
 SRCDIR = src
-INCDIR = includes
 ODIR = ofiles
 
 # Source and object files
-SRCS = main.cpp Animal.cpp Cat.cpp Dog.cpp WrongAnimal.cpp WrongCat.cpp
+SRCS = main.cpp Animal.cpp Cat.cpp Dog.cpp WrongAnimal.cpp WrongCat.cpp Brain.cpp
 SRC = $(addprefix $(SRCDIR)/,$(SRCS))
 OBJS = $(addprefix $(ODIR)/,$(notdir $(SRC:.cpp=.o)))
 DEPS = $(OBJS:.o=.d)
