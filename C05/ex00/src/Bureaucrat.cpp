@@ -6,7 +6,7 @@
 /*   By: yokitane <yokitane@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 18:17:44 by yokitane          #+#    #+#             */
-/*   Updated: 2025/09/29 19:21:22 by yokitane         ###   ########.fr       */
+/*   Updated: 2025/09/29 19:36:35 by yokitane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ Bureaucrat::Bureaucrat(): _name("Just another cog in the machine"), _grade(150)
 {
 }
 
-Bureaucrat::Bureaucrat(const std::string name, unsigned char grade): _name(name), _grade(150)
+Bureaucrat::Bureaucrat(const std::string name, int grade): _name(name), _grade(150)
 {
 	try
 	{
@@ -25,18 +25,31 @@ Bureaucrat::Bureaucrat(const std::string name, unsigned char grade): _name(name)
 	catch(const std::exception& e)
 	{
 		std::cerr << e.what() << std::endl;
-		throw std::out_of_range("Grade is out of range");
 	}
 }
 
 Bureaucrat::Bureaucrat(const Bureaucrat &other) : _name(other.getName()), _grade(150)
 {
-	setGrade(other.getGrade());
+	try
+	{
+		setGrade(other.getGrade());
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << std::endl;
+	}
 }
 
 Bureaucrat &Bureaucrat::operator=(const Bureaucrat &other)
 {
-	setGrade(other.getGrade());
+	try
+	{
+		setGrade(other.getGrade());
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << std::endl;
+	}
 	return (*this);
 }
 
@@ -52,10 +65,10 @@ const std::string Bureaucrat::getName() const
 
 int Bureaucrat::getGrade() const
 {
-	return (static_cast<int>(_grade));
+	return (_grade);
 }
 
-void Bureaucrat::setGrade(unsigned char grade)
+void Bureaucrat::setGrade(int grade)
 {
 	if (grade < 1)
 		throw Bureaucrat::GradeTooHighException();
@@ -66,12 +79,26 @@ void Bureaucrat::setGrade(unsigned char grade)
 
 void Bureaucrat::gpp()
 {
-	setGrade(_grade - 1);
+	try
+	{
+		setGrade(_grade - 1);
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << std::endl;
+	}
 }
 
 void Bureaucrat::gmm()
 {
-	setGrade(_grade + 1);
+	try
+	{
+		setGrade(_grade + 1);
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << std::endl;
+	}
 }
 const char* Bureaucrat::GradeTooHighException::what() const throw()
 {
