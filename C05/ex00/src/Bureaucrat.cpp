@@ -6,7 +6,7 @@
 /*   By: yokitane <yokitane@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 18:17:44 by yokitane          #+#    #+#             */
-/*   Updated: 2025/09/29 19:36:35 by yokitane         ###   ########.fr       */
+/*   Updated: 2025/09/29 20:03:57 by yokitane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,32 +24,20 @@ Bureaucrat::Bureaucrat(const std::string name, int grade): _name(name), _grade(1
 	}
 	catch(const std::exception& e)
 	{
-		std::cerr << e.what() << std::endl;
+		throw;
 	}
 }
 
 Bureaucrat::Bureaucrat(const Bureaucrat &other) : _name(other.getName()), _grade(150)
 {
-	try
-	{
-		setGrade(other.getGrade());
-	}
-	catch(const std::exception& e)
-	{
-		std::cerr << e.what() << std::endl;
-	}
+	setGrade(other.getGrade());
 }
 
 Bureaucrat &Bureaucrat::operator=(const Bureaucrat &other)
 {
-	try
-	{
-		setGrade(other.getGrade());
-	}
-	catch(const std::exception& e)
-	{
-		std::cerr << e.what() << std::endl;
-	}
+	if (this == &other)
+		return (*this);
+	setGrade(other.getGrade());
 	return (*this);
 }
 
@@ -85,7 +73,7 @@ void Bureaucrat::gpp()
 	}
 	catch(const std::exception& e)
 	{
-		std::cerr << e.what() << std::endl;
+		throw;
 	}
 }
 
@@ -97,7 +85,7 @@ void Bureaucrat::gmm()
 	}
 	catch(const std::exception& e)
 	{
-		std::cerr << e.what() << std::endl;
+		throw;
 	}
 }
 const char* Bureaucrat::GradeTooHighException::what() const throw()
