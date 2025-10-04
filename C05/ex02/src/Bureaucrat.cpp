@@ -6,7 +6,7 @@
 /*   By: yokitane <yokitane@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 18:17:44 by yokitane          #+#    #+#             */
-/*   Updated: 2025/10/04 16:21:25 by yokitane         ###   ########.fr       */
+/*   Updated: 2025/10/04 17:59:34 by yokitane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,15 +89,6 @@ void Bureaucrat::gmm()
 		throw;
 	}
 }
-const char* Bureaucrat::GradeTooHighException::what() const throw()
-{
-	return ("Grade is too high");
-}
-
-const char* Bureaucrat::GradeTooLowException::what() const throw()
-{
-	return ("Grade is too low");
-}
 
 void Bureaucrat::signForm(AForm &form) const
 {
@@ -116,6 +107,29 @@ void Bureaucrat::signForm(AForm &form) const
 	}
 }
 
+void Bureaucrat::executeForm(AForm const & form) const
+{
+	try
+	{
+		form.execute(*this);
+		std::cout << _name << " executed " << form.getName() << std::endl;
+	}
+	catch(std::exception &e)
+	{
+		std::cout << _name << " couldn't execute " << form.getName()
+				  << " because their " << e.what();
+	}
+}
+
+const char* Bureaucrat::GradeTooHighException::what() const throw()
+{
+	return ("grade is too high");
+}
+
+const char* Bureaucrat::GradeTooLowException::what() const throw()
+{
+	return ("grade is too low");
+}
 
 std::ostream& operator<<(std::ostream &os, const Bureaucrat &bureaucrat)
 {

@@ -41,7 +41,7 @@ class AForm
 		void				setExecuted(bool val);
 		//member methods
 		void				beSigned(const Bureaucrat &bureaucrat);
-		void				execute(const Bureaucrat &executer);
+		void				execute(const Bureaucrat &executer) const;
 		virtual void		execAction() = 0;
 		//exceptions
 		class GradeTooHighException : public std::exception
