@@ -24,7 +24,6 @@ class AForm
 		const int	_signreq;
 		const int	_execreq;
 		bool		_signed;
-		bool		_executed;
 	public:
 		AForm();
 		AForm(const std::string name, int signreq, int execreq);
@@ -37,12 +36,10 @@ class AForm
 		int					getExecreq() const;
 		bool				isSigned() const;
 		bool				isExecuted() const;
-		//setter(s)
-		void				setExecuted(bool val);
 		//member methods
 		void				beSigned(const Bureaucrat &bureaucrat);
 		void				execute(const Bureaucrat &executer) const;
-		virtual void		execAction() = 0;
+		virtual void		execAction() const = 0 ;
 		//exceptions
 		class GradeTooHighException : public std::exception
 		{

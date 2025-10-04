@@ -14,11 +14,11 @@
 #include "../includes/Bureaucrat.hpp"
 
 AForm::AForm() :
-		_name("some boring Aform"), _signreq(150), _execreq(150), _signed(false), _executed(false)
+		_name("some boring Aform"), _signreq(150), _execreq(150), _signed(false)
 {};
 
 AForm::AForm(const std::string name, int signreq, int execreq) :
-		_name(name), _signreq(signreq), _execreq(execreq), _signed(false), _executed(false)
+		_name(name), _signreq(signreq), _execreq(execreq), _signed(false)
 {
 	if (signreq < 1 || execreq < 1)
 		throw GradeTooHighException();
@@ -28,7 +28,7 @@ AForm::AForm(const std::string name, int signreq, int execreq) :
 
 AForm::AForm(const AForm &other) :
 		_name(other.getName()), _signreq(other.getSignreq()),
-		_execreq(other.getExecreq()), _signed(other.isSigned()), _executed(other.isExecuted())
+		_execreq(other.getExecreq()), _signed(other.isSigned())
 {
 }
 
@@ -37,7 +37,6 @@ AForm &AForm::operator=(const AForm &other)
 	if (this == &other)
 		return (*this);
 	_signed = other.isSigned();
-	_executed = other.isExecuted();
 	return (*this);
 }
 
@@ -65,16 +64,6 @@ bool AForm::isSigned() const
 	return (_signed);
 }
 
-bool AForm::isExecuted() const
-{
-	return (_executed);
-}
-
-void AForm::setExecuted(bool val)
-{
-	_executed = val;
-}
-
 void AForm::beSigned(const Bureaucrat &bureaucrat)
 {
 	if (bureaucrat.getGrade() <= _signreq)
@@ -82,7 +71,7 @@ void AForm::beSigned(const Bureaucrat &bureaucrat)
 	_signed = true;
 }
 
-void AForm::execute(const Bureaucrat &executer)
+void AForm::execute(const Bureaucrat &executer) const
 {
 	if (!_signed)
 	{
