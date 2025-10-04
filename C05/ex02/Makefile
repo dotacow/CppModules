@@ -4,7 +4,7 @@ CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -Wshadow -MMD -MP -Iincludes
 SRCDIR = src
 ODIR = ofiles
 
-SRCS = Form.cpp Bureaucrat.cpp main.cpp
+SRCS = AForm.cpp Bureaucrat.cpp main.cpp
 SRC = $(addprefix $(SRCDIR)/,$(SRCS))
 OBJS = $(addprefix $(ODIR)/,$(notdir $(SRC:.cpp=.o)))
 DEPS = $(OBJS:.o=.d)

@@ -65,6 +65,11 @@ bool AForm::isSigned() const
 	return (_signed);
 }
 
+bool AForm::isExecuted() const
+{
+	return (_executed);
+}
+
 void AForm::setExecuted(bool val)
 {
 	_executed = val;
