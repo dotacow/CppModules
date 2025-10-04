@@ -6,12 +6,12 @@
 /*   By: yokitane <yokitane@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 18:17:44 by yokitane          #+#    #+#             */
-/*   Updated: 2025/10/01 17:21:00 by yokitane         ###   ########.fr       */
+/*   Updated: 2025/10/04 16:21:25 by yokitane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/Bureaucrat.hpp"
-#include "../includes/Form.hpp"
+#include "../includes/AForm.hpp"
 
 Bureaucrat::Bureaucrat(): _name("Just another cog in the machine"), _grade(150)
 {
@@ -99,7 +99,7 @@ const char* Bureaucrat::GradeTooLowException::what() const throw()
 	return ("Grade is too low");
 }
 
-void Bureaucrat::signForm(class Form &form) const
+void Bureaucrat::signForm(AForm &form) const
 {
 	if (_grade <= form.getSignreq() && !form.isSigned())
 	{

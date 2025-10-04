@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Form.hpp                                           :+:      :+:    :+:   */
+/*   AForm.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yokitane <yokitane@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 16:36:51 by yokitane          #+#    #+#             */
-/*   Updated: 2025/10/01 17:33:05 by yokitane         ###   ########.fr       */
+/*   Updated: 2025/10/04 15:59:27 by yokitane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,28 +14,35 @@
 
 #include <string>
 #include <iostream>
-#include "Bureaucrat.hpp"
 
-class Form
+class Bureaucrat;
+
+class AForm
 {
 	private:
 		const std::string _name;
 		const int	_signreq;
 		const int	_execreq;
 		bool		_signed;
+		bool		_executed;
 	public:
-		Form();
-		Form(const std::string name, int signreq, int execreq);
-		Form(const Form &other);
-		Form &operator=(const Form &other);
-		~Form();
+		AForm();
+		AForm(const std::string name, int signreq, int execreq);
+		AForm(const AForm &other);
+		AForm &operator=(const AForm &other);
+		virtual ~AForm();
 		//getters
 		const std::string	getName() const;
 		int					getSignreq() const;
 		int					getExecreq() const;
 		bool				isSigned() const;
-		//setters
+		bool				isExecuted() const;
+		//setter(s)
+		void				setExecuted(bool val);
+		//member methods
 		void				beSigned(const Bureaucrat &bureaucrat);
+		void				execute(const Bureaucrat &executer);
+		virtual void		execAction() = 0;
 		//exceptions
 		class GradeTooHighException : public std::exception
 		{
@@ -47,7 +54,6 @@ class Form
 			public:
 				virtual const char* what() const throw();
 		};
-
 };
 
-std::ostream& operator<<(std::ostream &os, const Form &form);
+std::ostream& operator<<(std::ostream &os, const AForm &Aform);
