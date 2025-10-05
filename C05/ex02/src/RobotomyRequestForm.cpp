@@ -6,7 +6,7 @@
 /*   By: yokitane <yokitane@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/04 18:36:22 by yokitane          #+#    #+#             */
-/*   Updated: 2025/10/05 18:19:44 by yokitane         ###   ########.fr       */
+/*   Updated: 2025/10/05 20:31:26 by yokitane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void RobotomyRequestForm::execAction() const
 {
 	srand(time(0));
 	std::cout << "*BRRRRRRRRRRRRRZZZZZZ*" << std::endl;
-	if (rollDie(0,100) > 100)
+	if (rollDie(0,100) > 50)
 		std::cout << _target << " has been robotomized successfully.";
 	else
 		std::cout << "robotomy failed, " << _target << "metallic's exterior proved too tough.";
