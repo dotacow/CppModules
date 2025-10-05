@@ -77,7 +77,14 @@ void AForm::execute(const Bureaucrat &executer) const
 		throw FormNotSignedException(_name);
 	if (executer.getGrade() > _execreq)
 		throw GradeTooLowException(_name);
-	this->execAction();
+	try
+	{
+		this->execAction();
+	}
+	catch(const std::exception& e)
+	{
+		throw;
+	}
 }
 
 AForm::GradeTooHighException::GradeTooHighException(const std::string &formname)
