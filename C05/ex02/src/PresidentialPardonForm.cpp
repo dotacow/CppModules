@@ -6,7 +6,7 @@
 /*   By: yokitane <yokitane@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/04 18:36:22 by yokitane          #+#    #+#             */
-/*   Updated: 2025/10/04 19:07:41 by yokitane         ###   ########.fr       */
+/*   Updated: 2025/10/05 17:29:17 by yokitane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 PresidentialPardonForm::PresidentialPardonForm() :
 				AForm("PresidentialPardonForm", 145, 137),
-				_target("general pardon")
+				_target("a corrupt offical")
 {};
 
 PresidentialPardonForm::PresidentialPardonForm(const std::string target) :
@@ -44,7 +44,7 @@ const std::string PresidentialPardonForm::getTarget() const
 
 void PresidentialPardonForm::execAction() const
 {
-
+	std::cout << _target << " has been pardoned by Zaphod Beeblebrox." << std::endl;
 };
 
 std::ostream& operator<<(std::ostream &os, const PresidentialPardonForm &pdf)
