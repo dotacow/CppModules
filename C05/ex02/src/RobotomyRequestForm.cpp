@@ -6,11 +6,13 @@
 /*   By: yokitane <yokitane@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/04 18:36:22 by yokitane          #+#    #+#             */
-/*   Updated: 2025/10/04 19:07:45 by yokitane         ###   ########.fr       */
+/*   Updated: 2025/10/05 18:19:44 by yokitane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <cstdlib>
 #include "../includes/RobotomyRequestForm.hpp"
+#include "../includes/randUtils.hpp"
 
 RobotomyRequestForm::RobotomyRequestForm() :
 				AForm("RobotomyRequestForm", 145, 137),
@@ -44,7 +46,13 @@ const std::string RobotomyRequestForm::getTarget() const
 
 void RobotomyRequestForm::execAction() const
 {
-
+	srand(time(0));
+	std::cout << "*BRRRRRRRRRRRRRZZZZZZ*" << std::endl;
+	if (rollDie(0,100) > 100)
+		std::cout << _target << " has been robotomized successfully.";
+	else
+		std::cout << "robotomy failed, " << _target << "metallic's exterior proved too tough.";
+	std::cout << std::endl;
 };
 
 std::ostream& operator<<(std::ostream &os, const RobotomyRequestForm &rqf)

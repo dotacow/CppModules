@@ -6,7 +6,7 @@
 /*   By: yokitane <yokitane@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 18:17:44 by yokitane          #+#    #+#             */
-/*   Updated: 2025/10/04 17:59:34 by yokitane         ###   ########.fr       */
+/*   Updated: 2025/10/05 18:11:20 by yokitane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,7 +117,7 @@ void Bureaucrat::executeForm(AForm const & form) const
 	catch(std::exception &e)
 	{
 		std::cout << _name << " couldn't execute " << form.getName()
-				  << " because their " << e.what();
+				  << " because " << e.what();
 	}
 }
 
