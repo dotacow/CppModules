@@ -6,7 +6,7 @@
 /*   By: yokitane <yokitane@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 16:36:46 by yokitane          #+#    #+#             */
-/*   Updated: 2025/10/01 17:33:22 by yokitane         ###   ########.fr       */
+/*   Updated: 2025/10/05 18:13:12 by yokitane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ bool Form::isSigned() const
 
 void Form::beSigned(const Bureaucrat &bureaucrat)
 {
-	if (bureaucrat.getGrade() <= _signreq)
+	if (bureaucrat.getGrade() >= _signreq)
 		throw GradeTooLowException();
 	_signed = true;
 }
