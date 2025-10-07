@@ -6,12 +6,14 @@
 /*   By: yokitane <yokitane@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/05 20:12:31 by yokitane          #+#    #+#             */
-/*   Updated: 2025/10/05 20:30:34 by yokitane         ###   ########.fr       */
+/*   Updated: 2025/10/07 14:54:20 by yokitane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/Intern.hpp"
-
+#include "../includes/PresidentialPardonForm.hpp"
+#include "../includes/RobotomyRequestForm.hpp"
+#include "../includes/ShrubberyCreationForm.hpp"
 Intern::FormNotFoundException::FormNotFoundException(const std::string& formName, const std::string& target)
 {
 	this->msg = "Intern failed to create form: " + formName + " with target: " + target;
@@ -37,7 +39,8 @@ static std::string allCaps(const std::string& str)
 static int getFormType(const std::string& formName)
 {
 	std::string temp = allCaps(formName);
-	std::string formTypes[3] = {
+	std::string formTypes[3] =
+	{
 		"SHRUBBERY CREATION",
 		"ROBOTOMY REQUEST",
 		"PRESIDENTIAL PARDON"

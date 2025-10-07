@@ -6,19 +6,19 @@
 /*   By: yokitane <yokitane@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/04 18:36:22 by yokitane          #+#    #+#             */
-/*   Updated: 2025/10/05 17:29:17 by yokitane         ###   ########.fr       */
+/*   Updated: 2025/10/07 14:37:23 by yokitane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/PresidentialPardonForm.hpp"
 
 PresidentialPardonForm::PresidentialPardonForm() :
-				AForm("PresidentialPardonForm", 145, 137),
+				AForm("PresidentialPardonForm", 25, 5),
 				_target("a corrupt offical")
 {};
 
 PresidentialPardonForm::PresidentialPardonForm(const std::string target) :
-				AForm("PresidentialPardonForm", 145, 137),
+				AForm("PresidentialPardonForm", 25, 5),
 				_target(target)
 {};
 PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm &other) :

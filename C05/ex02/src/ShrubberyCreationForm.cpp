@@ -6,7 +6,7 @@
 /*   By: yokitane <yokitane@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/04 18:36:22 by yokitane          #+#    #+#             */
-/*   Updated: 2025/10/05 19:07:47 by yokitane         ###   ########.fr       */
+/*   Updated: 2025/10/07 14:37:26 by yokitane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void ShrubberyCreationForm::execAction() const
 	if (!outfile)
 		throw std::ios_base::failure("Error: Could not create file.");
 	int numTrees = rollDie(2, 4);
-	
+
 	for (int i = 0; i < numTrees; i++)
 	{
 		int treeType = rollDie(0, 2);

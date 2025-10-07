@@ -120,8 +120,6 @@ std::ostream& operator<<(std::ostream &os, const AForm &Aform)
 {
 	os << "AForm: " << Aform.getName() << ", Sign grade requirement: "
 	<< Aform.getSignreq() << ", Execute grade requirement: "
-	<< Aform.getExecreq() << ", Signed: " << (Aform.isSigned() ? "Yes" : "No")
-	<< std::endl;
-
+	<< Aform.getExecreq() << ", Signed: " << (Aform.isSigned() ? "Yes" : "No");
 	return (os);
 }

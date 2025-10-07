@@ -6,7 +6,7 @@
 /*   By: yokitane <yokitane@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 16:36:46 by yokitane          #+#    #+#             */
-/*   Updated: 2025/10/05 18:13:12 by yokitane         ###   ########.fr       */
+/*   Updated: 2025/10/07 14:33:48 by yokitane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,8 +83,7 @@ std::ostream& operator<<(std::ostream &os, const Form &form)
 {
 	os << "Form: " << form.getName() << ", Sign grade requirement: "
 	<< form.getSignreq() << ", Execute grade requirement: "
-	<< form.getExecreq() << ", Signed: " << (form.isSigned() ? "Yes" : "No")
-	<< std::endl;
-
+	<< form.getExecreq() << ", Signed: " << (form.isSigned() ? "Yes" : "No");
+	
 	return (os);
 }

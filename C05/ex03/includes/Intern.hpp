@@ -6,15 +6,12 @@
 /*   By: yokitane <yokitane@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/05 19:49:43 by yokitane          #+#    #+#             */
-/*   Updated: 2025/10/05 20:30:32 by yokitane         ###   ########.fr       */
+/*   Updated: 2025/10/07 14:54:03 by yokitane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 #include "AForm.hpp"
-#include "PresidentialPardonForm.hpp"
-#include "RobotomyRequestForm.hpp"
-#include "ShrubberyCreationForm.hpp"
 #include <string>
 
 class Intern

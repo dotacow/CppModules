@@ -6,7 +6,7 @@
 /*   By: yokitane <yokitane@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/04 18:36:22 by yokitane          #+#    #+#             */
-/*   Updated: 2025/10/05 20:31:26 by yokitane         ###   ########.fr       */
+/*   Updated: 2025/10/07 14:37:24 by yokitane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,12 @@
 #include "../includes/randUtils.hpp"
 
 RobotomyRequestForm::RobotomyRequestForm() :
-				AForm("RobotomyRequestForm", 145, 137),
+				AForm("RobotomyRequestForm", 72, 45),
 				_target("Home of the supreme leader")
 {};
 
 RobotomyRequestForm::RobotomyRequestForm(const std::string target) :
-				AForm("RobotomyRequestForm", 145, 137),
+				AForm("RobotomyRequestForm", 72, 45),
 				_target(target)
 {};
 RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &other) :
