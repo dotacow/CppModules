@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ScalarConverter.cpp                                :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: yokitane <yokitane@student.42amman.com>    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/10 18:08:32 by yokitane          #+#    #+#             */
-/*   Updated: 2025/10/13 15:58:56 by yokitane         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "../includes/ScalarConverter.hpp"
 #include <limits>
 #include <errno.h>
@@ -22,37 +10,39 @@ ScalarConverter::~ScalarConverter() {}
 
 static e_LiteralType getLiteralType(std::string str)
 {
-
 	char *endptr;
 
-	if (str.length() == 1 && str[0] >= 32 && str[0] <= 126)
+	if (str.empty())
+		return NON_LITERAL;
+	if (str.length() == 1 && !isdigit(str[0]))
 		return CHAR;
 	if (str == "-inf" || str == "+inf" || str == "nan")
 		return PSEUDO;
 	{
-		int len = str.length();
-		if ((str[0] == '-' || str[0] == '+') && len > 1)
-			len--;
-		long long val = strtol(str.c_str(), &endptr, 10);
+		errno = 0;
+		long val = strtol(str.c_str(), &endptr, 10);
 		if (errno != ERANGE && val <= std::numeric_limits<int>::max() &&
-			val >= std::numeric_limits<int>::min() && *endptr == '\0')
+			val >= std::numeric_limits<int>::min() && *endptr == '\0' && endptr != str.c_str())
 				return INT;
 	}
 	{
-		 float val = strtof(str.c_str(), &endptr);
+		errno = 0;
+		float val = strtof(str.c_str(), &endptr);
 		if (errno != ERANGE && val <= std::numeric_limits<float>::max() &&
-			val >= std::numeric_limits<float>::min() &&
-			*endptr == 'f' && *(endptr + 1) == '\0')
+			val >= -std::numeric_limits<float>::max() &&
+			*endptr == 'f' && *(endptr + 1) == '\0' && endptr != str.c_str())
 				return FLOAT;
 	}
 	{
+		errno = 0;
 		long double val = strtod(str.c_str(), &endptr);
 		if (errno != ERANGE && *endptr == '\0' && val <= std::numeric_limits<double>::max()
-			&& val >= std::numeric_limits<double>::min())
+			&& val >= -std::numeric_limits<double>::max() && endptr != str.c_str())
 				return DOUBLE;
 	}
 	return NON_LITERAL;
 }
+
 static void toChar(std::string str, e_LiteralType type)
 {
 	if (type == NON_LITERAL || type == PSEUDO)
@@ -60,9 +50,18 @@ static void toChar(std::string str, e_LiteralType type)
 		std::cout << "char: impossible\n";
 		return ;
 	}
+	if (type == CHAR)
+	{
+		char c = str[0];
+		if (c < 32 || c == 127)
+			std::cout << "char: Non displayable\n";
+		else
+			std::cout << "char: '" << c << "'\n";
+		return;
+	}
 	errno = 0;
 	double val = strtod(str.c_str(), NULL);
-	if (val != static_cast<int>(val) || val < 0 || val > 127)
+	if (errno == ERANGE || val != static_cast<int>(val) || val < 0 || val > 127)
 	{
 		std::cout << "char: impossible\n";
 		return ;
@@ -74,6 +73,7 @@ static void toChar(std::string str, e_LiteralType type)
 	}
 	std::cout << "char: '" << static_cast<char>(val) << "'\n";
 }
+
 static void toInt(std::string str, e_LiteralType type)
 {
 	if (type == NON_LITERAL || type == PSEUDO)
@@ -81,13 +81,25 @@ static void toInt(std::string str, e_LiteralType type)
 		std::cout << "int: impossible\n";
 		return ;
 	}
+	if (type == CHAR)
+	{
+		std::cout << "int: " << static_cast<int>(str[0]) << "\n";
+		return;
+	}
 	errno = 0;
-	long long val = strtol(str.c_str(), NULL, 10);
-	if (errno == ERANGE)
+	char *endptr;
+	long val = strtol(str.c_str(), &endptr, 10);
+	if (errno == ERANGE || val > std::numeric_limits<int>::max() ||
+		val < std::numeric_limits<int>::min())
+	{
 		std::cout << "int: impossible\n";
+	}
 	else
-		std::cout << "int: " << val << "\n";
+	{
+		std::cout << "int: " << static_cast<int>(val) << "\n";
+	}
 }
+
 static void toFloat(std::string str, e_LiteralType type)
 {
 	if (type == NON_LITERAL)
@@ -96,23 +108,29 @@ static void toFloat(std::string str, e_LiteralType type)
 		return ;
 	}
 	if (type == PSEUDO)
+	{
 		std::cout << "float: " << str << "f\n";
+		return;
+	}
+	if (type == CHAR)
+	{
+		std::cout << "float: " << static_cast<float>(str[0]) << ".0f\n";
+		return;
+	}
+	errno = 0;
+	float val = strtof(str.c_str(), NULL);
+	if (errno == ERANGE)
+		std::cout << "float: impossible\n";
 	else
 	{
-		errno = 0;
-		float val = strtof(str.c_str(), NULL);
-		if (errno == ERANGE)
-			std::cout << "float: impossible\n";
+		if (val == static_cast<int>(val))
+			std::cout << "float: " << val << ".0";
 		else
-		{
-			if (val == static_cast<int>(val))
-				std::cout << "float: " << val << ".0";
-			else
-				std::cout << "float: " << val;
-			std::cout << "f\n";
-		}
+			std::cout << "float: " << val;
+		std::cout << "f\n";
 	}
 }
+
 static void toDouble(std::string str, e_LiteralType type)
 {
 	if (type == NON_LITERAL)
@@ -121,20 +139,25 @@ static void toDouble(std::string str, e_LiteralType type)
 		return ;
 	}
 	if (type == PSEUDO)
+	{
 		std::cout << "double: " << str << "\n";
+		return;
+	}
+	if (type == CHAR)
+	{
+		std::cout << "double: " << static_cast<double>(str[0]) << ".0\n";
+		return;
+	}
+	errno = 0;
+	double val = strtod(str.c_str(), NULL);
+	if (errno == ERANGE)
+		std::cout << "double: impossible\n";
 	else
 	{
-		errno = 0;
-		double val = strtod(str.c_str(), NULL);
-		if (errno == ERANGE)
-			std::cout << "double: impossible\n";
+		if (val == static_cast<int>(val))
+			std::cout << "double: " << val << ".0\n";
 		else
-		{
-			if (val == static_cast<int>(val))
-				std::cout << "double: " << val << ".0\n";
-			else
-				std::cout << "double: " << val << "\n";
-		}
+			std::cout << "double: " << val << "\n";
 	}
 }
 
