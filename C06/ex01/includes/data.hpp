@@ -1,28 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Serializer.cpp                                     :+:      :+:    :+:   */
+/*   data.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yokitane <yokitane@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/14 19:39:16 by yokitane          #+#    #+#             */
-/*   Updated: 2025/10/14 20:29:48 by yokitane         ###   ########.fr       */
+/*   Created: 2025/10/14 19:51:32 by yokitane          #+#    #+#             */
+/*   Updated: 2025/10/14 20:28:12 by yokitane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/Serializer.hpp"
-#include "../includes/data.hpp"
-#include <stdint.h>
+#pragma once
 
-Serializer::Serializer(){};
-Serializer::~Serializer(){};
+#include <string>
 
-uintptr_t	Serializer::serialize(Data* ptr)
+typedef struct s_Data
 {
-	return (reinterpret_cast<uintptr_t>(ptr));
-}
-
-Data*	Serializer::deserialize(uintptr_t raw)
-{
-	return (reinterpret_cast<Data *>(raw));
-}
+	std::string str;
+	int			n;
+} Data;
