@@ -6,7 +6,7 @@
 /*   By: yokitane <yokitane@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 12:51:47 by yokitane          #+#    #+#             */
-/*   Updated: 2025/10/15 12:51:52 by yokitane         ###   ########.fr       */
+/*   Updated: 2025/10/15 13:10:47 by yokitane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,11 @@
 ScalarConverter::ScalarConverter() {}
 ScalarConverter::ScalarConverter(const ScalarConverter &other){(void)other;}
 ScalarConverter::~ScalarConverter() {}
+ScalarConverter &ScalarConverter::operator=(const ScalarConverter &other)
+{
+	(void)other;
+	return (*this);
+}
 
 static e_LiteralType getLiteralType(std::string str)
 {

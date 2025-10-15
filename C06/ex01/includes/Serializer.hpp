@@ -6,7 +6,7 @@
 /*   By: yokitane <yokitane@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/14 19:38:57 by yokitane          #+#    #+#             */
-/*   Updated: 2025/10/14 20:31:06 by yokitane         ###   ########.fr       */
+/*   Updated: 2025/10/15 13:10:59 by yokitane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ class Serializer
 {
 	private:
 		Serializer();
+		Serializer(const Serializer &other);
+		Serializer &operator=(const Serializer &other);
 		~Serializer();
 	public:
 		static uintptr_t	serialize(Data* ptr);

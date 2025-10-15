@@ -6,7 +6,7 @@
 /*   By: yokitane <yokitane@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/10 17:27:29 by yokitane          #+#    #+#             */
-/*   Updated: 2025/10/15 12:46:12 by yokitane         ###   ########.fr       */
+/*   Updated: 2025/10/15 13:09:32 by yokitane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ class ScalarConverter
 	private:
 		ScalarConverter();
 		ScalarConverter(const ScalarConverter &other);
+		ScalarConverter &operator=(const ScalarConverter &other);
 		~ScalarConverter();
 	public:
 		static void convert(std::string str);
