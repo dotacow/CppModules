@@ -6,7 +6,7 @@
 /*   By: yokitane <yokitane@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 12:51:47 by yokitane          #+#    #+#             */
-/*   Updated: 2025/10/15 13:10:47 by yokitane         ###   ########.fr       */
+/*   Updated: 2025/10/15 14:26:12 by yokitane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,7 +126,12 @@ static void toFloat(std::string str, e_LiteralType type)
 		std::cout << "float: impossible\n";
 		return ;
 	}
-	if (type == PSEUDOF || type == PSEUDOD)
+	if (type == PSEUDOF)
+	{
+		std::cout << "float: " << str << "\n";
+		return;
+	}
+	if (type == PSEUDOD)
 	{
 		std::cout << "float: " << str << "f\n";
 		return;
