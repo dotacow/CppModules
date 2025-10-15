@@ -6,7 +6,7 @@
 /*   By: yokitane <yokitane@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/10 17:27:29 by yokitane          #+#    #+#             */
-/*   Updated: 2025/10/13 15:15:10 by yokitane         ###   ########.fr       */
+/*   Updated: 2025/10/15 12:46:12 by yokitane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@ enum e_LiteralType
 	INT,
 	FLOAT,
 	DOUBLE,
-	PSEUDO,
+	PSEUDOF,
+	PSEUDOD,
 	NON_LITERAL = -1,
 };
 

@@ -17,7 +17,9 @@ static e_LiteralType getLiteralType(std::string str)
 	if (str.length() == 1 && !isdigit(str[0]))
 		return CHAR;
 	if (str == "-inf" || str == "+inf" || str == "nan")
-		return PSEUDO;
+		return PSEUDOD;
+	if (str == "-inff" || str == "+inff" || str == "nanf")
+		return PSEUDOF;
 	{
 		errno = 0;
 		long val = strtol(str.c_str(), &endptr, 10);
@@ -45,7 +47,7 @@ static e_LiteralType getLiteralType(std::string str)
 
 static void toChar(std::string str, e_LiteralType type)
 {
-	if (type == NON_LITERAL || type == PSEUDO)
+	if (type == NON_LITERAL || type == PSEUDOF || type == PSEUDOD)
 	{
 		std::cout << "char: impossible\n";
 		return ;
@@ -76,7 +78,7 @@ static void toChar(std::string str, e_LiteralType type)
 
 static void toInt(std::string str, e_LiteralType type)
 {
-	if (type == NON_LITERAL || type == PSEUDO)
+	if (type == NON_LITERAL || type == PSEUDOF || type == PSEUDOD)
 	{
 		std::cout << "int: impossible\n";
 		return ;
@@ -107,7 +109,7 @@ static void toFloat(std::string str, e_LiteralType type)
 		std::cout << "float: impossible\n";
 		return ;
 	}
-	if (type == PSEUDO)
+	if (type == PSEUDOF || type == PSEUDOD)
 	{
 		std::cout << "float: " << str << "f\n";
 		return;
@@ -133,12 +135,12 @@ static void toFloat(std::string str, e_LiteralType type)
 
 static void toDouble(std::string str, e_LiteralType type)
 {
-	if (type == NON_LITERAL)
+	if (type == NON_LITERAL || type == PSEUDOF)
 	{
 		std::cout << "double: impossible\n";
 		return ;
 	}
-	if (type == PSEUDO)
+	if (type == PSEUDOD)
 	{
 		std::cout << "double: " << str << "\n";
 		return;
