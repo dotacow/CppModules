@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ScalarConverter.cpp                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yokitane <yokitane@student.42amman.com>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/10/15 12:51:47 by yokitane          #+#    #+#             */
+/*   Updated: 2025/10/15 12:51:52 by yokitane         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/ScalarConverter.hpp"
 #include <limits>
 #include <errno.h>
@@ -10,7 +22,7 @@ ScalarConverter::~ScalarConverter() {}
 
 static e_LiteralType getLiteralType(std::string str)
 {
-	char *endptr;
+	char	*endptr;
 
 	if (str.empty())
 		return NON_LITERAL;
