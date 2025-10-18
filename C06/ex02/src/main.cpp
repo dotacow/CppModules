@@ -6,7 +6,7 @@
 /*   By: yokitane <yokitane@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 15:13:07 by yokitane          #+#    #+#             */
-/*   Updated: 2025/10/15 14:19:30 by yokitane         ###   ########.fr       */
+/*   Updated: 2025/10/18 17:09:20 by yokitane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,5 +84,7 @@ int main (void)
 	std::cout << "Identify by reference:\n";
 	identify(*base1);
 	identify(*base2);
+	delete base1;
+	delete base2;
 	return (0);
 }
