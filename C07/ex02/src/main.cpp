@@ -6,7 +6,7 @@
 /*   By: yokitane <yokitane@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/20 16:05:12 by yokitane          #+#    #+#             */
-/*   Updated: 2025/10/20 17:14:20 by yokitane         ###   ########.fr       */
+/*   Updated: 2025/10/20 17:15:29 by yokitane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,5 +39,8 @@ int main(void)
 	catch(const std::exception& e){
 		std::cerr << e.what() << "\n";
 	}
+	moreWords[0] = "Bye";
+	std::cout << "moreWords[0] after modification: " << moreWords[0] << "\n";
+	std::cout << "words[0] after moreWords modification: " << words[0] << "\n";
 	return (0);
 }
