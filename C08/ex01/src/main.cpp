@@ -3,18 +3,21 @@
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
+#include <vector>
 
 #define N_LIMIT 9000000l
 
 int main(int argc, char** argv)
 {
 	{
+		std::vector<int> vec;
 		Span sp = Span(5);
-		sp.addNumber(6);
-		sp.addNumber(3);
-		sp.addNumber(17);
-		sp.addNumber(9);
-		sp.addNumber(11);
+		vec.push_back(6);
+		vec.push_back(3);
+		vec.push_back(17);
+		vec.push_back(9);
+		vec.push_back(11);
+		sp.addRange(vec.begin(), vec.end());
 		std::cout << sp.shortestSpan() << std::endl;
 		std::cout << sp.longestSpan() << std::endl;
 		std::cout<< "END PROOF OF CONCEPT\n";
