@@ -1,5 +1,7 @@
 #pragma once
 #include <set>
+#include <stdexcept>
+
 class Span
 {
 	private:
@@ -23,7 +25,14 @@ class Span
 		{
 			while (begin != end)
 			{
-				addNumber(*begin);
+				try
+				{
+					addNumber(*begin);
+				}
+				catch (std::overflow_error &e)
+				{
+					throw;
+				}
 				++begin;
 			}
 		};

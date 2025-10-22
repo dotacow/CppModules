@@ -7,6 +7,10 @@ Span::Span(){};
 
 Span::Span(unsigned int n): _maxSize(n), _shortestSpan(LONG_MAX), _hasSpan(false)
 {
+	if (n == 0)
+	{
+		throw std::invalid_argument("span: size must be greater than 0");
+	}
 };
 
 Span::Span(const Span &other): _maxSize(other._maxSize), _data(other._data),
@@ -37,7 +41,7 @@ void	Span::addNumber(int num)
 		std::string err = ss.str();
 		throw std::overflow_error(err.c_str());
 	}
-	std::multiset<int>::iterator it = _data.insert(num);
+	std::multiset<int>::iterator it = _data.insert(num);//O(log n)
 	if (_data.size() >= 2)
 	{
 		_hasSpan = true;
