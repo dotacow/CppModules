@@ -10,7 +10,6 @@ class VecSpan
 		long				_shortestSpan;
 		bool				_hasSpan;
 		bool				_sorted;
-		void				updateSpans();
 		VecSpan();
 	public:
 		// canonical form

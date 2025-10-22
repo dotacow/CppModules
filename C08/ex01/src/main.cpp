@@ -1,4 +1,5 @@
 #include "../includes/Span.hpp"
+#include "../includes/VecSpan.hpp"
 #include <iostream>
 #include <cstdlib>
 #include <vector>
@@ -21,28 +22,28 @@ int main(int argc, char** argv)
 	}
 	if (argc != 2)
 	{
-		std::cerr << "Usage: " << argv[0] << " <size>\n";
+		std::cerr << "Usage: " << argv[0] << " <n>\n";
 		return 1;
 	}
 	std::srand(time(NULL));
 	long size = (std::atoi(argv[1]));
-	if (size >= N_LIMIT || size <= 0)
+	if (size >= N_LIMIT || size <= 1)
 	{
-		std::cerr << "max n is " << N_LIMIT <<"\n";
+		std::cerr << "n valid range > 1, < " << N_LIMIT <<"\n";
 		return 1;
 	}
-	Span sp(size);
-	std::vector<int> vec;
-	vec.reserve(size);
+	VecSpan sp(size);
+	// std::vector<int> vec;
+	// vec.reserve(size);
 	for (long i = 0; i < size; i++)
 	{
 		if (i % 2)
-			vec.push_back(std::rand());
+			sp.addNumber(std::rand());
 		else
-			vec.push_back(-std::rand());
+			sp.addNumber(-std::rand());
 	}
 	clock_t start = clock();
-	sp.addRange(vec.begin(), vec.end());
+	// sp.addRange(vec.begin(), vec.end());
 	std::cout << "Shortest Span: " << sp.shortestSpan() << "\n";
 	std::cout << "Longest Span: " << sp.longestSpan() << "\n";
 	clock_t end = clock();
