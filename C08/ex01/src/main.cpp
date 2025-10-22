@@ -2,7 +2,6 @@
 #include "../includes/VecSpan.hpp"
 #include <iostream>
 #include <cstdlib>
-#include <vector>
 #include <ctime>
 
 #define N_LIMIT 9000000l
