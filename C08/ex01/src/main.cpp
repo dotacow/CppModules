@@ -32,9 +32,7 @@ int main(int argc, char** argv)
 		return 1;
 	}
 	VecSpan sp(size);
-	// std::vector<int> vec;
-	// vec.reserve(size);
-	for (long i = 0; i < size; i++)
+	for (long i = 0; i < size / 2; i++)
 	{
 		if (i % 2)
 			sp.addNumber(std::rand());
@@ -42,9 +40,17 @@ int main(int argc, char** argv)
 			sp.addNumber(-std::rand());
 	}
 	clock_t start = clock();
-	// sp.addRange(vec.begin(), vec.end());
 	std::cout << "Shortest Span: " << sp.shortestSpan() << "\n";
 	std::cout << "Longest Span: " << sp.longestSpan() << "\n";
+	for (long i = size / 2; i < size; i++)
+	{
+		if (i % 2)
+			sp.addNumber(std::rand());
+		else
+			sp.addNumber(-std::rand());
+	}
+	std::cout << "Second shortest Span: " << sp.shortestSpan() << "\n";
+	std::cout << "Second longest Span: " << sp.longestSpan() << "\n";
 	clock_t end = clock();
 	double time_taken = double(end - start) / CLOCKS_PER_SEC;
 	std::cout << "Time taken by program is : " << time_taken << "seconds\n";
