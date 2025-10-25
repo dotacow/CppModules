@@ -13,7 +13,12 @@ class MutantStack : public std::stack<T>
 		//canonical form
 		MutantStack() : std::stack<T>() {};
 		MutantStack(const MutantStack &other) : std::stack<T>(other) {};
-		MutantStack &operator=(const MutantStack &other){};
+		MutantStack &operator=(const MutantStack &other)
+		{
+			if (this != &other)
+				std::stack<T>::operator=(other);
+			return *this;
+		};
 		~MutantStack() {};
 		//iterators
 		iterator begin() { return this->c.begin(); };
