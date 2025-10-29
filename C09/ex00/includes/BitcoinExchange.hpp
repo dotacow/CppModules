@@ -1,13 +1,11 @@
 #pragma once
 #include <map>
-#include <sstream>
 #include <string>
-#include <fstream>
 
 class BitcoinExchange
 {
 	private:
-		std::map<std::string, float> data;
+		std::map<long long, float> data;
 		BitcoinExchange();
 	public:
 		BitcoinExchange(const std::string& filename);
