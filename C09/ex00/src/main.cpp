@@ -28,7 +28,7 @@ int main(int argc, char **argv)
 			double		val;
 
 			if (!date_utils::ParseLine(line, date, value))
-				std::cerr << "Error: bad input at line " << i << ": \"" << line << "\"\n";
+				std::cerr << "at line " << i << ": \"" << line << "\"\n";
 			else
 			{
 				key = date_utils::ToDate(date);

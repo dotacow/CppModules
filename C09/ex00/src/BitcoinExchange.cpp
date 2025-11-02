@@ -4,6 +4,7 @@
 #include <stdexcept>
 #include <iostream>
 #include <cstdlib>
+#include <cfloat>
 
 BitcoinExchange::BitcoinExchange() {};
 
@@ -43,11 +44,16 @@ void BitcoinExchange::FillMap(const std::string& filename)
 	std::getline(infile, line);
 	while (std::getline(infile, line))
 	{
-		if (date_utils::ParseLine(line, date, value))
+		if (BitcoinExchange::ParseLine(line, date, value))
 		{
 			long long key = date_utils::ToDate(date);
 			double val = strtod(value.c_str(), NULL);
 			data[key] = val;
+		}
+		else
+		{
+			std::cerr << "in data file: \"" << line << "\"\n";
+			throw std::runtime_error("Error: invalid data file.");
 		}
 	}
 }
@@ -62,4 +68,39 @@ void BitcoinExchange::Convert(long long date, double value)
 	double result = value * it->second;
 	std::cout << date / 10000 << "-" << (date / 100) % 100 << "-" << date % 100
 			<< " => " << value << " = " << result << "\n";
+}
+bool BitcoinExchange::ParseLine(const std::string& line, std::string& date, std::string& value)
+{
+	std::string::size_type pos = line.find('|');
+	if (pos == std::string::npos)
+		pos = line.find(',');
+	if(pos == std::string::npos)
+	{
+		std::cerr << "Error: bad input => " << line << " ";
+		return false;
+	}
+	date = line.substr(0, pos);
+	value = line.substr(pos + 1);
+	while (!date.empty() && std::isspace(date[date.size() - 1])) date.erase(date.size() - 1);
+	while (!date.empty() && std::isspace(date[0])) date.erase(0,1);
+	while (!value.empty() && std::isspace(value[value.size() - 1])) value.erase(value.size() - 1);
+	while (!value.empty() && std::isspace(value[0])) value.erase(0, 1);
+	return date_utils::IsValidDate(date) && BitcoinExchange::IsValidValue(value);
+}
+
+bool BitcoinExchange::IsValidValue(const std::string& valueStr)
+{
+	if (valueStr.empty())
+	{
+		std::cerr << "Error: missing value ";
+		return false;
+	}
+	char* end;
+	double val = strtod(valueStr.c_str(), &end);
+	if (*end != '\0' || val < 0.0 || val >= FLT_MAX || errno == ERANGE)
+	{
+		std::cerr << "Error: invalid value => " << valueStr << " ";
+		return false;
+	}
+	return true;
 }

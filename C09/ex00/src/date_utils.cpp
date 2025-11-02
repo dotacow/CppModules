@@ -1,6 +1,7 @@
 #include <string>
 #include <cstdlib>
 #include <cerrno>
+#include <iostream>
 
 namespace date_utils
 {
@@ -12,21 +13,30 @@ namespace date_utils
 	bool IsValidDate(const std::string& date)
 	{
 		if (date.size() != 10 || date[4] != '-' || date[7] != '-')
+		{
+			std::cerr << "Error: malformed date format => " << date << " ";
 			return false;
+		}
 
 		int year = std::atoi(date.substr(0, 4).c_str());
 		int month = std::atoi(date.substr(5, 2).c_str());
 		int day = std::atoi(date.substr(8, 2).c_str());
 
 		if (month < 1 || month > 12 || day < 1)
+		{
+			std::cerr << "Error: invalid date => " << date << " ";
 			return false;
+		}
 
 		static const int daysInMonth[] = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
 		int dim = daysInMonth[month - 1];
 		if (month == 2 && IsLeapYear(year))
 			dim = 29;
 
-		return day <= dim;
+		if(day <= dim)
+			return true;
+		std::cerr << "Error: invalid day of month => " << date << " ";
+		return false;
 	}
 
 	long long ToDate(const std::string& date)
@@ -40,21 +50,28 @@ namespace date_utils
 	bool IsValidValue(const std::string& valueStr)
 	{
 		if (valueStr.empty())
+		{
+			std::cerr << "Error: missing value ";
 			return false;
+		}
 		char* end;
 		double val = strtod(valueStr.c_str(), &end);
 		if (*end != '\0' || val < 0.0 || val > 1000.0 || errno == ERANGE)
+		{
+			std::cerr << "Error: invalid value => " << valueStr << " ";
 			return false;
+		}
 		return true;
 	}
 
 	bool ParseLine(const std::string& line, std::string& date, std::string& value)
 	{
 		std::string::size_type pos = line.find('|');
-		if (pos == std::string::npos)
-			pos = line.find(',');
 		if(pos == std::string::npos)
+		{
+			std::cerr << "Error: bad input => " << line << " ";
 			return false;
+		}
 
 		date = line.substr(0, pos);
 		value = line.substr(pos + 1);
