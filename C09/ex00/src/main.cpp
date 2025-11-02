@@ -4,6 +4,7 @@
 #include <iostream>
 #include <stdexcept>
 #include <string>
+#include <cstdlib>
 
 int main(int argc, char **argv)
 {
@@ -17,7 +18,7 @@ int main(int argc, char **argv)
 		BitcoinExchange	btc("data.csv");
 		std::fstream	infile(argv[1]);
 		if (!infile.is_open())
-			throw std::runtime_error("Error: could not open file.");
+			throw std::runtime_error("Error: could not open input file.");
 		std::string		line,date,value;
 		int i = 1;
 
@@ -25,12 +26,13 @@ int main(int argc, char **argv)
 		{
 			long long key;
 			double		val;
+
 			if (!date_utils::ParseLine(line, date, value))
 				std::cerr << "Error: bad input at line " << i << ": \"" << line << "\"\n";
 			else
 			{
 				key = date_utils::ToDate(date);
-				val = std::strtod(value.c_str(), NULL);
+				val = strtod(value.c_str(), NULL);
 				btc.Convert(key, val);
 			}
 			i++;

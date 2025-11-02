@@ -1,5 +1,6 @@
 #include <string>
 #include <cstdlib>
+#include <cerrno>
 
 namespace date_utils
 {
@@ -41,7 +42,7 @@ namespace date_utils
 		if (valueStr.empty())
 			return false;
 		char* end;
-		double val = std::strtod(valueStr.c_str(), &end);
+		double val = strtod(valueStr.c_str(), &end);
 		if (*end != '\0' || val < 0.0 || val > 1000.0 || errno == ERANGE)
 			return false;
 		return true;
@@ -51,6 +52,8 @@ namespace date_utils
 	{
 		std::string::size_type pos = line.find('|');
 		if (pos == std::string::npos)
+			pos = line.find(',');
+		if(pos == std::string::npos)
 			return false;
 
 		date = line.substr(0, pos);
