@@ -1,5 +1,5 @@
 #include <string>
-#include <cctype>
+#include <cstdlib>
 
 namespace date_utils
 {
@@ -58,7 +58,7 @@ namespace date_utils
 
 		while (!date.empty() && std::isspace(date[date.size() - 1])) date.erase(date.size() - 1);
 		while (!date.empty() && std::isspace(date[0])) date.erase(0,1);
-		
+
 		while (!value.empty() && std::isspace(value[value.size() - 1])) value.erase(value.size() - 1);
 		while (!value.empty() && std::isspace(value[0])) value.erase(0, 1);
 
