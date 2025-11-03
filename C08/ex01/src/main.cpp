@@ -34,7 +34,7 @@ int main(int argc, char** argv)
 		std::cerr << "n valid range > 1, < " << N_LIMIT <<"\n";
 		return 1;
 	}
-	VecSpan sp(size);
+	Span sp(size);
 	for (long i = 0; i < size / 2; i++)
 	{
 		if (i % 2)
