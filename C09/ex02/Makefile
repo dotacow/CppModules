@@ -4,12 +4,12 @@ CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -Wshadow -MMD -MP -Iincludes
 SRCDIR = src
 ODIR = ofiles
 
-SRCS = main.cpp RPN.cpp
+SRCS = main.cpp PmergeMe.cpp
 SRC = $(addprefix $(SRCDIR)/,$(SRCS))
 OBJS = $(addprefix $(ODIR)/,$(notdir $(SRC:.cpp=.o)))
 DEPS = $(OBJS:.o=.d)
 
-NAME = RPN
+NAME = PmergeMe
 
 all: $(NAME)
 
